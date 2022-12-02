@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import Profile from "./screens/Profile";
 import Home from "./screens/Home";
@@ -7,6 +7,16 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CategoryPg from "./screens/CategoryPg";
+import Header from "./components/Header";
+import MenuHeader from "./components/MenuHeader";
+
+const PageHeader = ({ navigation, title }) => (
+  <Header>
+    <View style={styles.content}>
+      <Text style={styles.title}>{title}</Text>
+    </View>
+  </Header>
+);
 
 const TabsScreen = () => {
   return <NavigationContainer></NavigationContainer>;
@@ -32,10 +42,29 @@ export default function Routes() {
   return (
     <NavigationContainer>
       <Tabs.Navigator>
-        <Tabs.Screen name="HomeStack" component={HomeStackScreen} />
-        <Tabs.Screen name="Profile" children={Profile} />
+        <Tabs.Screen
+          name="Home"
+          component={Home}
+          options={{
+            header: MenuHeader,
+          }}
+        />
+
         <Tabs.Screen name="History" component={History} />
+        <Tabs.Screen name="Profile" component={Profile} />
       </Tabs.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  content: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  title: {
+    color: "white",
+    fontSize: 24,
+    fontWeight: "700",
+  },
+});

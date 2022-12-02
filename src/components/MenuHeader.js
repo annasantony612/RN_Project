@@ -1,20 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import Routes from "./src/Routes";
 
-const App = () => {
+const MenuHeader = () => {
   return (
     <View style={styles.container}>
-      <Routes />
+      <Text>FaMoney</Text>
     </View>
   );
 };
 
+export default MenuHeader;
+
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "white",
+    flexDirection: "row",
+    backgroundColor: "#02C3BD",
+    paddingVertical: 18,
+    paddingHorizontal: 16,
   },
 });
-
-export default App;

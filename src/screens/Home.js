@@ -3,10 +3,8 @@ import React from "react";
 
 const Home = ({ navigation }) => {
   return (
-    <View>
-      <Text style={{ color: "black", fontSize: 30 }}>Home</Text>
-
-      <Button title=" home" onPress={() => navigation.navigate("History")} />
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text style={{ color: "black", fontSize: 13 }}>Welcome to FaMoney</Text>
     </View>
   );
 };
