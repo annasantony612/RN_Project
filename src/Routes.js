@@ -43,15 +43,27 @@ export default function Routes() {
     <NavigationContainer>
       <Tabs.Navigator>
         <Tabs.Screen
-          name="Home"
-          component={Home}
+          name="HomeStack"
+          component={HomeStackScreen}
           options={{
             header: MenuHeader,
           }}
         />
 
-        <Tabs.Screen name="History" component={History} />
-        <Tabs.Screen name="Profile" component={Profile} />
+        <Tabs.Screen
+          name="History"
+          component={History}
+          options={{
+            header: ({ navigation }) => <PageHeader title="History" />,
+          }}
+        />
+        <Tabs.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            header: ({ navigation }) => <PageHeader title="Profile" />,
+          }}
+        />
       </Tabs.Navigator>
     </NavigationContainer>
   );

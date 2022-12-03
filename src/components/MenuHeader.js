@@ -4,7 +4,7 @@ import React from "react";
 const MenuHeader = () => {
   return (
     <View style={styles.container}>
-      <Text>FaMoney</Text>
+      <Text style={styles.text}>FaMoney</Text>
     </View>
   );
 };
@@ -16,6 +16,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "#02C3BD",
     paddingVertical: 18,
-    paddingHorizontal: 16,
+    paddingHorizontal: 25,
+  },
+  text: {
+    color: "#ffffff",
+    fontSize: 20,
+    fontWeight: "700",
   },
 });
