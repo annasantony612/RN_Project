@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const MenuHeader = () => {
+const HomeHeader = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>FaMoney</Text>
@@ -9,7 +9,7 @@ const MenuHeader = () => {
   );
 };
 
-export default MenuHeader;
+export default HomeHeader;
 
 const styles = StyleSheet.create({
   container: {
@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
   },
   text: {
-    color: "#ffffff",
-    fontSize: 20,
+    color: "white",
+    fontSize: 24,
     fontWeight: "700",
   },
 });

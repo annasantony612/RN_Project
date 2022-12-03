@@ -8,7 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CategoryPg from "./screens/CategoryPg";
 import Header from "./components/Header";
-import MenuHeader from "./components/MenuHeader";
+import HomeHeader from "./components/HomeHeader";
 
 const PageHeader = ({ navigation, title }) => (
   <Header>
@@ -22,11 +22,23 @@ const TabsScreen = () => {
   return <NavigationContainer></NavigationContainer>;
 };
 const HomeStack = createStackNavigator();
-const HomeStackScreen = () => {
-  <HomeStack.Navigator>
-    <HomeStack.Screen name="Home" component={Home} />
-    <HomeStack.Screen name="CategoryPg" component={CategoryPg} />
-  </HomeStack.Navigator>;
+const HomeScreen = () => {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="Home"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="CategoryPg"
+        component={CategoryPg}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </HomeStack.Navigator>
+  );
 };
 // const ProfileStack= createStackNavigator ();
 // const ProfileStackScreen =() =>
@@ -44,9 +56,9 @@ export default function Routes() {
       <Tabs.Navigator>
         <Tabs.Screen
           name="HomeStack"
-          component={HomeStackScreen}
+          component={HomeScreen}
           options={{
-            header: MenuHeader,
+            header: ({ navigation }) => <HomeHeader title="FaMoney" />,
           }}
         />
 

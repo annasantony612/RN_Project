@@ -3,27 +3,19 @@ import React from "react";
 import CircleButton from "../components/Button";
 import CategoryPg from "./CategoryPg";
 
-// const Home = ({ navigation }) => {
-//   console.log(navigation);
-//   return (
-//     <View style={{ flex: 1, backgroundColor: "red" }}>
-//       <View style={styles.container}>
-//         <Text style={styles.text}>Welcome to FaMoney</Text>
-//       </View>
-//       <View style={styles.container1}>
-//         <CircleButton
-//           onPress={() => navigation.navigate("CategoryPg")}
-//           navigation={navigation}
-//         />
-//       </View>
-//     </View>
-//   );
-// };
-
-const Home = ({}) => {
+const Home = ({ navigation }) => {
+  console.log(navigation);
   return (
-    <View>
-      <Text> jih</Text>
+    <View style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Text style={styles.text}>Welcome to FaMoney</Text>
+      </View>
+      <View style={styles.container1}>
+        <CircleButton
+          onPress={() => navigation.navigate("CategoryPg")}
+          navigation={navigation}
+        />
+      </View>
     </View>
   );
 };
