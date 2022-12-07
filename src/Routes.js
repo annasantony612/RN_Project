@@ -9,6 +9,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CategoryPg from "./screens/CategoryPg";
 import Header from "./components/Header";
 import HomeHeader from "./components/HomeHeader";
+import Liability from "./screens/Liability";
+import Bills from "./screens/Bills";
 
 const PageHeader = ({ navigation, title }) => (
   <Header>
@@ -33,6 +35,20 @@ const HomeScreen = () => {
       <HomeStack.Screen
         name="CategoryPg"
         component={CategoryPg}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="Liability"
+        component={Liability}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <HomeStack.Screen
+        name="Bills"
+        component={Bills}
         options={{
           headerShown: false,
         }}

@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import CircleButton from "../components/Button";
+import Button from "../components/Button";
 import CategoryPg from "./CategoryPg";
 
 const Home = ({ navigation }) => {
@@ -11,9 +11,10 @@ const Home = ({ navigation }) => {
         <Text style={styles.text}>Welcome to FaMoney</Text>
       </View>
       <View style={styles.container1}>
-        <CircleButton
+        <Button
           onPress={() => navigation.navigate("CategoryPg")}
           navigation={navigation}
+          title="Add Expenses"
         />
       </View>
     </View>
@@ -33,8 +34,8 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   container1: {
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
     paddingHorizontal: 30,
     paddingVertical: 30,
   },

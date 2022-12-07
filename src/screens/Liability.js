@@ -18,7 +18,18 @@ const Liability = () => {
             height: 41,
             backgroundColor: "#D9D9D9",
             borderRadius: 10,
-            color: "black",
+          }}
+        ></TextInput>
+        <Text style={{ paddingBottom: 10, paddingTop: 30, color: "black" }}>
+          Total Amount
+        </Text>
+
+        <TextInput
+          style={{
+            width: 300,
+            height: 41,
+            backgroundColor: "#D9D9D9",
+            borderRadius: 10,
           }}
         ></TextInput>
         <Text style={{ paddingBottom: 10, paddingTop: 30, color: "black" }}>
@@ -31,7 +42,6 @@ const Liability = () => {
             height: 41,
             backgroundColor: "#D9D9D9",
             borderRadius: 10,
-            color: "black",
           }}
         ></TextInput>
       </View>

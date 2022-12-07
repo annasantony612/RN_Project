@@ -1,22 +1,27 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 
-const CircleButton = ({ navigation, onPress }) => {
+const Button = ({ navigation, onPress, title }) => {
   return (
-    <TouchableOpacity
-      style={styles.container}
-      onPress={onPress}
-    ></TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.container1} onPress={onPress}>
+        <Text style={styles.text}>{title}</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default CircleButton;
+export default Button;
 
 const styles = StyleSheet.create({
   container: {
-    width: 50,
-    height: 50,
+    padding: 10,
     backgroundColor: "#02C3BD",
-    borderRadius: 45,
+    paddingHorizontal: 30,
+    borderRadius: 10,
   },
+  container1: {
+    backgroundColor: "#02C3BD",
+  },
+  text: { color: "white", fontSize: 25, fontWeight: "700" },
 });
