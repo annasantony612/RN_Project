@@ -2,8 +2,88 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 import Button from "../components/Button";
 import { TextInput } from "react-native-gesture-handler";
+import SQLite from "react-native-sqlite-storage";
+import { useState, useEffect } from "react";
+import Home from "./Home";
 
-const Liability = () => {
+const db = SQLite.openDatabase(
+  {
+    name: "MainDB",
+    location: "default",
+  },
+  () => {},
+  (error) => {
+    console.log(error);
+  }
+);
+
+export default function Login({ navigation }) {
+  const [name, setName] = useState("");
+  const [totalamount, setTotalAmount] = useState("");
+  const [installmentamount, setInstallmentAmount] = useState("");
+
+  useEffect(() => {
+    createTable();
+    getData();
+  }, []);
+  const createTable = () => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "CREATE TABLE IF NOT EXISTS " +
+          "Users " +
+          "(Name  TEXT PRIMARY KEY AUTOINCREMENT, TotalAmount INTEGER, InstallmentAmount INTEGER);"
+      );
+    });
+  };
+  const getData = () => {
+    try {
+      // AsyncStorage.getItem('UserData')
+      //     .then(value => {
+      //         if (value != null) {
+      //             navigation.navigate('Home');
+      //         }
+      //     })
+      db.transaction((tx) => {
+        tx.executeSql("SELECT Name, TotalAmount ,Installment FROM Users", [], (tx, results) => {
+          var len = results.rows.length;
+          if (len > 0) {
+            navigation.navigate("Home");
+          }
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+   
+  const setData = async () => {
+    if (name.length == 0 || age.length == 0) {
+      Alert.alert("Warning!", "Please write your data.");
+    } else {
+      try {
+        // var user = {
+        //     Name: name,
+        //     Age: age
+        // }
+        // await AsyncStorage.setItem('UserData', JSON.stringify(user));
+        await db.transaction(async (tx) => {
+          // await tx.executeSql(
+          //     "INSERT INTO Users (Name, Age) VALUES ('" + name + "'," + age + ")"
+          // );
+          await tx.executeSql("INSERT INTO Users (Name, TotalAmount, InstallmentAmount) VALUES (?,?)", [
+            name,
+            totalamount,
+            installmentamount,
+          ]);
+        });
+        navigation.navigate("Home");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+   const Liability = () => {
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -46,7 +126,9 @@ const Liability = () => {
         ></TextInput>
       </View>
       <View style={styles.container3}>
-        <Button title="save" />
+        <Button onPress={() => navigation.navigate({ name: Home })}
+          navigation={navigation}
+          title="Continue" />
       </View>
     </View>
   );
