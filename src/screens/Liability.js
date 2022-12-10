@@ -135,7 +135,7 @@ export default function Login({ navigation }) {
 };
 
 export default Liability;
-styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   container: { flex: 1 },
   container1: { flex: 1, alignItems: "center", justifyContent: "center" },
   container2: { flex: 3, paddingLeft: 30 },
