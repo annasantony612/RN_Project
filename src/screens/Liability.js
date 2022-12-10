@@ -44,18 +44,22 @@ export default function Login({ navigation }) {
       //         }
       //     })
       db.transaction((tx) => {
-        tx.executeSql("SELECT Name, TotalAmount ,Installment FROM Users", [], (tx, results) => {
-          var len = results.rows.length;
-          if (len > 0) {
-            navigation.navigate("Home");
+        tx.executeSql(
+          "SELECT Name, TotalAmount ,Installment FROM Users",
+          [],
+          (tx, results) => {
+            var len = results.rows.length;
+            if (len > 0) {
+              navigation.navigate("Home");
+            }
           }
-        });
+        );
       });
     } catch (error) {
       console.log(error);
     }
   };
-   
+
   const setData = async () => {
     if (name.length == 0 || age.length == 0) {
       Alert.alert("Warning!", "Please write your data.");
@@ -70,11 +74,10 @@ export default function Login({ navigation }) {
           // await tx.executeSql(
           //     "INSERT INTO Users (Name, Age) VALUES ('" + name + "'," + age + ")"
           // );
-          await tx.executeSql("INSERT INTO Users (Name, TotalAmount, InstallmentAmount) VALUES (?,?)", [
-            name,
-            totalamount,
-            installmentamount,
-          ]);
+          await tx.executeSql(
+            "INSERT INTO Users (Name, TotalAmount, InstallmentAmount) VALUES (?,?)",
+            [name, totalamount, installmentamount]
+          );
         });
         navigation.navigate("Home");
       } catch (error) {
@@ -82,8 +85,6 @@ export default function Login({ navigation }) {
       }
     }
   };
-
-   const Liability = () => {
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -126,16 +127,17 @@ export default function Login({ navigation }) {
         ></TextInput>
       </View>
       <View style={styles.container3}>
-        <Button onPress={() => navigation.navigate({ name: Home })}
+        <Button
+          onPress={() => navigation.navigate({ name: Home })}
           navigation={navigation}
-          title="Continue" />
+          title="Continue"
+        />
       </View>
     </View>
   );
-};
+}
 
-export default Liability;
- const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: { flex: 1 },
   container1: { flex: 1, alignItems: "center", justifyContent: "center" },
   container2: { flex: 3, paddingLeft: 30 },
