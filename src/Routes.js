@@ -9,9 +9,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CategoryPg from "./screens/CategoryPg";
 import Header from "./components/Header";
 import HomeHeader from "./components/HomeHeader";
-import Liability from "./screens/Liability";
+// import Liability from "./screens/Liability";
 import Bills from "./screens/Bills";
 // import DataBase from "./screens/DataBase";
+import Start from "./screens/Start";
 
 const PageHeader = ({ navigation, title }) => (
   <Header>
@@ -44,13 +45,13 @@ const HomeScreen = () => {
           headerShown: false,
         }}
       />
-      <HomeStack.Screen
+      {/* <HomeStack.Screen
         name="Liability"
         component={Liability}
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
       <HomeStack.Screen
         name="Bills"
         component={Bills}
@@ -68,36 +69,55 @@ const HomeScreen = () => {
 //     <ProfileStack.Screen name = ""
 //   </ProfileStack.Navigator>
 // }
+const TabStackScreen = () => {
+  const Tabs = createBottomTabNavigator();
 
-const Tabs = createBottomTabNavigator();
+  {
+    return (
+      <NavigationContainer>
+        <Tabs.Navigator>
+          <Tabs.Screen
+            name="HomeStack"
+            component={HomeScreen}
+            options={{
+              header: ({ navigation }) => <HomeHeader title="FaMoney" />,
+            }}
+          />
 
+          <Tabs.Screen
+            name="History"
+            component={History}
+            options={{
+              header: ({ navigation }) => <PageHeader title="History" />,
+            }}
+          />
+          <Tabs.Screen
+            name="Profile"
+            component={Profile}
+            options={{
+              header: ({ navigation }) => <PageHeader title="Profile" />,
+            }}
+          />
+        </Tabs.Navigator>
+      </NavigationContainer>
+    );
+  }
+};
 export default function Routes() {
-  return (
-    <NavigationContainer>
-      <Tabs.Navigator>
-        <Tabs.Screen
-          name="HomeStack"
-          component={HomeScreen}
-          options={{
-            header: ({ navigation }) => <HomeHeader title="FaMoney" />,
-          }}
-        />
+  const StartStack = createStackNavigator();
 
-        <Tabs.Screen
-          name="History"
-          component={History}
-          options={{
-            header: ({ navigation }) => <PageHeader title="History" />,
-          }}
-        />
-        <Tabs.Screen
-          name="Profile"
-          component={Profile}
-          options={{
-            header: ({ navigation }) => <PageHeader title="Profile" />,
-          }}
-        />
-      </Tabs.Navigator>
+  return (
+    //   <NavigationContainer>
+    //     <TabStackScreen />
+    //   </NavigationContainer>
+    // );
+    <NavigationContainer>
+      <StartStack.Navigator
+        initialRouteName="Start"
+        screenOptions={{ headerShown: false }}
+      >
+        <StartStack.Screen name="Start" component={Start} />
+      </StartStack.Navigator>
     </NavigationContainer>
   );
 }
