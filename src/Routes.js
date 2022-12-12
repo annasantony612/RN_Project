@@ -69,7 +69,7 @@ const HomeScreen = () => {
 //     <ProfileStack.Screen name = ""
 //   </ProfileStack.Navigator>
 // }
-const TabStackScreen = () => {
+const GetStartScreen = () => {
   const Tabs = createBottomTabNavigator();
 
   {
@@ -104,13 +104,14 @@ const TabStackScreen = () => {
   }
 };
 export default function Routes() {
+  // const { isAuthenticated } = GetStartScreen;
   const StartStack = createStackNavigator();
-
   return (
+    // isAuthenticated ? (
     //   <NavigationContainer>
-    //     <TabStackScreen />
+    //     {/* <GetStartScreen />
     //   </NavigationContainer>
-    // );
+    // ) : ( */}
     <NavigationContainer>
       <StartStack.Navigator
         initialRouteName="Start"
